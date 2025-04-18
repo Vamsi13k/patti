@@ -1,0 +1,106 @@
+<!-- photos.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shiva & Parvati Moments 📸</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1a3642, #2c5364, #ff758c);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      color: white;
+      text-align: center;
+    }
+    .container {
+      animation: fadeIn 1s ease-in-out;
+      max-width: 90%;
+    }
+    img {
+      max-width: 90vw;
+      max-height: 65vh;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+      transition: all 0.5s ease-in-out;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background: #f5b342;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background: #ff9800;
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #f5b342;
+    }
+
+    #caption {
+      font-size: 1.3rem;
+      margin-top: 15px;
+      font-style: italic;
+      color: #f5b342;
+      min-height: 3em;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" autoplay>
+    <source src="s.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="container">
+    <img id="photo" src="1.jpg" alt="Photo 1">
+    <p id="caption">From the moment our souls met, I knew you were my forever.</p>
+    <button onclick="nextPhoto()">Next ➡️</button>
+  </div>
+
+  <script>
+    const photos = [
+      { src: "1.jpg", text: "From the moment our souls met, I knew you were my forever." },
+      { src: "2.jpg", text: "Like Shiva and Parvati, our bond is eternal and divine." },
+      { src: "3.jpg", text: "Every laugh, every tear, every moment — I cherish it with you." },
+      { src: "4.jpg", text: "In every lifetime, I’ll find you, love you, and be yours." }
+    ];
+
+    let current = 0;
+
+    function nextPhoto() {
+      current++;
+      if (current < photos.length) {
+        document.getElementById("photo").src = photos[current].src;
+        document.getElementById("caption").innerText = photos[current].text;
+      } else {
+        window.location.href = "video.html"; // Redirect to your final video page
+      }
+    }
+
+    // Ensure audio plays on user interaction (especially on mobile)
+    window.addEventListener('click', () => {
+      const music = document.getElementById("bgMusic");
+      if (music.paused) music.play();
+    });
+  </script>
+
+</body>
+</html>

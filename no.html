@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Error – Divine Intervention</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1a3642, #2c5364, #ff758c);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .error-box {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+      backdrop-filter: blur(15px);
+      animation: shake 0.5s ease-in-out infinite alternate;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #ff4c4c;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.3rem;
+      color: #f5b342;
+      font-style: italic;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background: #f5b342;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #ff9800;
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #f5b342;
+    }
+
+    @keyframes shake {
+      from { transform: translateX(-3px); }
+      to { transform: translateX(3px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="error-box">
+    <h1>⚠️ ERROR</h1>
+    <p>God has tied a knot for both of you<br>for the rest of this life and beyond.</p>
+    <button onclick="window.location.href='yes.html'">Go to YES 💖</button>
+  </div>
+
+  <!-- Audio file for thunder -->
+  <audio id="thunderSound" src="a.mp3" preload="auto"></audio>
+
+  <script>
+    window.onload = () => {
+      // Vibrate
+      if (navigator.vibrate) {
+        navigator.vibrate([300, 150, 300, 150, 500]);
+      }
+
+      // Play thunder sound
+      const audio = document.getElementById("thunderSound");
+      audio.play().catch(() => {
+        // fallback for autoplay restriction
+        document.body.addEventListener('click', () => audio.play(), { once: true });
+      });
+    };
+  </script>
+</body>
+</html>
